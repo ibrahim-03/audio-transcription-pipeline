@@ -113,7 +113,7 @@ brew install ffmpeg
 
 ```bash
 # Clone the repo
-git clone <your-repo-url>
+git clone https://github.com/ibrahim-03/audio-transcription-pipeline.git
 cd transcription-pipeline
 
 # Build & run
@@ -139,19 +139,6 @@ curl -X POST http://localhost:8080/api/v1/transcriptions \
 # Poll for result
 curl http://localhost:8080/api/v1/transcriptions/a1b2c3d4-...
 ```
-
----
-
-## Replacing the Mock STT Engine
-
-Open `SpeechToTextService.java`.  
-Replace the `transcribe()` method with a real implementation:
-
-- **Vosk** – add the `vosk` Maven dependency and a model directory, then use `Recognizer`.
-- **Whisper.cpp** – run the Whisper HTTP server locally and call it with a simple HTTP client.
-- Any other open-source model exposed via HTTP / gRPC.
-
-The rest of the pipeline (normalization, job handling, API) stays unchanged.
 
 ---
 
